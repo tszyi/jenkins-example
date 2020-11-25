@@ -1,6 +1,7 @@
 node {
   stage ('scripted pipeline') {
     echo 'hello scripted pipeline'
+    git branch: 'dev', changelog: false, poll: false, url: 'https://github.com/tszyi/jenkins-example'
     bat 'dir'
   }
   // stage('build'){
