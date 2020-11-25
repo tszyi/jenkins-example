@@ -1,7 +1,4 @@
 node {
-  tool name: 'git2.25', type: 'git'
-  tool name: 'Maven 3.6.3', type: 'maven'
-  tool name: 'jdk8', type: 'jdk'
   stage ('clone code') {
     // 以下會 clone 指定分支到 workspace
     git branch: 'dev', changelog: false, poll: false, url: 'https://github.com/tszyi/jenkins-example'
