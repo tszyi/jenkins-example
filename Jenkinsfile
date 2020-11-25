@@ -1,7 +1,7 @@
 node {
   stage ('scripted pipeline') {
     echo 'hello scripted pipeline'
-    sh 'ls -la'
+    bat 'dir'
   }
   // stage('build'){
   //   steps{
