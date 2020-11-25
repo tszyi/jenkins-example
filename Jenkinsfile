@@ -6,21 +6,14 @@ node {
     bat 'dir'
   }
   stage('build'){
-    steps{
-      echo "build starting"
-      bat 'mvn -B -DskipTests clean package'
-    }
+    echo "build starting"
+    bat 'mvn -B -DskipTests clean package'
   }
   stage('test'){
-    steps{
-      echo 'test starting'
-      bat 'mvn test'
-    }
+    echo 'test starting'
+    bat 'mvn test'
   }
   stage('deploy'){
-      steps{
-          echo 'deploy starting'
-
-      }
+      echo 'deploy starting'
   }
 }
