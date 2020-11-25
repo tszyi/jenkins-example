@@ -1,5 +1,5 @@
 node {
-  tool name: 'Default', type: 'git'
+  tool name: 'git2.25', type: 'git'
   tool name: 'Maven 3.6.3', type: 'maven'
   tool name: 'jdk8', type: 'jdk'
   stage ('clone code') {
