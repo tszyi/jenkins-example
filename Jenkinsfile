@@ -1,4 +1,8 @@
 node {
+  stage('show info') {
+    bat 'java -version'
+    bat 'mvn --version'
+  }
   stage ('clone code') {
     // 以下會 clone 指定分支到 workspace
     git branch: 'dev', changelog: false, poll: false, url: 'https://github.com/tszyi/jenkins-example'
