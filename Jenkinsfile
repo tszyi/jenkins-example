@@ -15,7 +15,6 @@ node {
     echo 'test starting'
     bat 'mvn test'
   }
-  tool 
   stage('deploy'){
       echo 'deploy starting'
       sh 'ssh root@192.168.56.108 \'bash -s\' < ./script/pre-deploy.sh'
