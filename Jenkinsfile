@@ -21,12 +21,12 @@ node {
         sh "echo $KEY_FILE"
         sh "echo $PASS"
         sh "echo $USER"
-        echo "${env.KEY_FILE}"
-        echo "${env.PASS}"
-        echo "${env.USER}"
-        echo KEY_FILE
-        echo PASS
-        echo USER
+        print "${env.KEY_FILE}"
+        print "${env.PASS}"
+        print "${env.USER}"
+        print KEY_FILE
+        print PASS
+        print USER
       }
       // sh 'ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.108'
       // sh 'ssh root@192.168.56.108 \'bash -s\' < ./script/pre-deploy.sh'
