@@ -22,9 +22,9 @@ node {
         sh "echo $PASS"
         sh "echo $USER"
         echo 
-        echo "$KEY_FILE"
-        echo "$PASS"
-        echo "$USER"
+        // echo "$KEY_FILE"
+        // echo "$PASS"
+        // echo "$USER"
         echo
         echo KEY_FILE
         echo PASS
