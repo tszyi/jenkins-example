@@ -15,9 +15,12 @@ node {
   stage('deploy'){
       echo 'deploy starting'
       withCredentials([sshUserPrivateKey(credentialsId: 'test-cred', keyFileVariable: 'KEY_FILE', passphraseVariable: 'PASS', usernameVariable: 'USER')]) {
-        sh 'echo $KEY_FILE'
-        sh 'echo $PASS'
-        sh 'echo $USER'
+        // 用引號的話，輸出將會被屏遮，如此就不會有資安隱憂
+        // sh 'echo $KEY_FILE'
+
+        sh "echo $KEY_FILE"
+        sh "echo $PASS"
+        sh "echo $USER"
       }
       // sh 'ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.108'
       // sh 'ssh root@192.168.56.108 \'bash -s\' < ./script/pre-deploy.sh'
