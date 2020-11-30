@@ -7,11 +7,11 @@ node {
   stage('build'){
     echo "build starting"
     echo sh(script: 'env|sort', returnStdout: true)
-    sh 'mvn -B -DskipTests clean package'
+    // sh 'mvn -B -DskipTests clean package'
   }
   stage('test'){
     echo 'test starting'
-    sh 'mvn test'
+    // sh 'mvn test'
   }
   stage('deploy'){
       echo 'deploy starting'
@@ -33,7 +33,8 @@ node {
         remote.user = USER
         remote.identityFile  = KEYFILE
         remote.allowAnyHosts = true
-        sshPut remote: remote, from: './target/my-app.war', into: '/opt/apache-tomcat-8.5.60/webapps'
+        sshPut remote: remote, from: './pom.xml', into: '/tmp'
+        // sshPut remote: remote, from: './target/my-app.war', into: '/opt/apache-tomcat-8.5.60/webapps'
       }
       // withCredentials([sshUserPrivateKey(credentialsId: 'ssh-56.108-credential', keyFileVariable: 'KEY', passphraseVariable: 'PASS', usernameVariable: 'USER')]) {
       //   def remote = [:]
