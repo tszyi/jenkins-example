@@ -25,12 +25,12 @@ node {
       //     // sh  'echo hello world' 
       // }
 
-      withCredentials([usernamePassword(credentialsId: 'user-pw-root', passwordVariable: 'ROOT_PW', usernameVariable: 'ROOT_USER')]) {
+      withCredentials([sshUserPrivateKey(credentialsId: 'ssh-56.108-credential', keyFileVariable: 'KEY', passphraseVariable: 'PASS', usernameVariable: 'USER')]) {
         def remote = [:]
-        remote.name = 'test'
+        remote.name = '192.168.56.108'
         remote.host = '192.168.56.108'
         remote.user = ROOT_USER
-        remote.password = ROOT_PW
+        remote.identityFile  = KEY
         remote.allowAnyHosts = true
         sshPut remote: remote, from: './target/my-app.war', into: '/opt/apache-tomcat-8.5.60/webapps'
       }
