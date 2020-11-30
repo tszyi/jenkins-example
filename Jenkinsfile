@@ -26,10 +26,21 @@ node {
       //     // sh  'echo hello world' 
       // }
 
+      // OK!
+      // withCredentials([sshUserPrivateKey(credentialsId: 'ssh-deploy-tomcat', keyFileVariable: 'KEYFILE', passphraseVariable: '', usernameVariable: 'USER')]) {
+      //   sh  'ssh -i $KEYFILE -l $USER 192.168.56.108'
+      //   sh  'echo hello world' 
+      // }
       withCredentials([sshUserPrivateKey(credentialsId: 'ssh-deploy-tomcat', keyFileVariable: 'KEYFILE', passphraseVariable: '', usernameVariable: 'USER')]) {
-        sh  'ssh -i $KEYFILE -l $USER 192.168.56.108'
-        sh  'echo hello world' 
+        def remote = [:]
+        remote.name = 'root'
+        remote.host = '192.168.56.108'
+        remote.user = USER
+        remote.identityFile  = KEY
+        remote.allowAnyHosts = true
+        sshPut remote: remote, from: './pom.xml', into: '/tmp'
       }
+
       // withCredentials([sshUserPrivateKey(credentialsId: 'ssh-56.108-credential', keyFileVariable: 'KEY', passphraseVariable: 'PASS', usernameVariable: 'USER')]) {
       //   def remote = [:]
       //   remote.name = 'root'
