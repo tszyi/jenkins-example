@@ -25,8 +25,8 @@ node {
         //     ssh root@192.168.56.108 'bash -s ' < ./script/pre-deploy.sh
         //     ./script/deploy.sh
         //     """
-        bat  """
-            ssh -o StrictHostKeyChecking=no -i "$KEY_FILE" root@192.168.56.108
+        sh  """
+            ssh -o StrictHostKeyChecking=no -i "$KEY_FILE" root@192.168.56.108 << EOF
             echo hello world
             exit
             """
