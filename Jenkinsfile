@@ -26,11 +26,13 @@ node {
       // }
 
       withCredentials([usernamePassword(credentialsId: 'user-pw-root', passwordVariable: 'ROOT_PW', usernameVariable: 'ROOT_USER')]) {
+        print 
+        
         def remote = [:]
         remote.name = 'test'
         remote.host = '192.168.56.108'
-        remote.user = ROOT_PW
-        remote.password = ROOT_USER
+        remote.user = ROOT_USER
+        remote.password = ROOT_PW
         remote.allowAnyHosts = true
         sshPut remote: remote, from: './target/my-app.war', into: '/opt/apache-tomcat-8.5.60/webapps'
       }
