@@ -26,7 +26,7 @@ node {
         //     ./script/deploy.sh
         //     """
         sh  """
-            ssh -o StrictHostKeyChecking=no -i "$KEY_FILE" root@192.168.56.108 << EOF
+            ssh -t -o StrictHostKeyChecking=no -i "$KEY_FILE" root@192.168.56.108 << EOF
             echo hello world
             exit
             """
