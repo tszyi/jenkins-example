@@ -1,9 +1,9 @@
 node {
   // TODO 由SCM的webhook 觸發build
-  // stage ('clone code') {
-  //   // 以下會 clone 指定分支到 workspace
-  //   git branch: 'dev', changelog: false, poll: false, url: 'https://github.com/tszyi/jenkins-example'
-  // }
+  stage ('clone code') {
+    // 以下會 clone 指定分支到 workspace
+    git branch: 'dev', changelog: false, poll: false, url: 'https://github.com/tszyi/jenkins-example'
+  }
   withEnv(['M2_HOME=/usr/local/maven']) {
     // some block
     stage('build'){
