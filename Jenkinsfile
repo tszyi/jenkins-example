@@ -21,10 +21,17 @@ node {
       //     """
       // }
       withCredentials([sshUserPrivateKey(credentialsId: 'test-cred', keyFileVariable: 'KEY_FILE', passphraseVariable: 'PASS', usernameVariable: 'USER')]) {
+        // sh  """
+        //     ssh root@192.168.56.108 'bash -s ' < ./script/pre-deploy.sh
+        //     ./script/deploy.sh
+        //     """
         sh  """
-            ssh root@192.168.56.108 'bash -s ' < ./script/pre-deploy.sh
-            ./script/deploy.sh
+            set -ev
+            ssh -o StrictHostKeyChecking=no root@192.168.56.108
+            echo hello world
+            exit
             """
+        
       }
       // sh 'ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.108'
       // sh 'ssh root@192.168.56.108 \'bash -s\' < ./script/pre-deploy.sh'
