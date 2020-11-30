@@ -44,7 +44,7 @@ node {
         //   sshPut remote: remote, from: './target/my-app.war', into: '/opt/apache-tomcat-8.5.60/webapps'
         // }
 
-        withCredentials([sshUserPrivateKey(credentialsId: 'ssh-deploy-tomcat', keyFileVariable: 'KEYFILE', passphraseVariable: '', usernameVariable: 'USER')]) {
+        withCredentials([sshUserPrivateKey(credentialsId: 'ssh-deploy-tomcat', keyFileVariable: 'KEYFILE', passphraseVariable: 'PASS', usernameVariable: 'USER')]) {
           // sh  'ssh -i $KEYFILE -l $USER 192.168.56.108 \'bash -s\' < ./script/pre-deploy.sh'
           node {
             def remote = [:]
