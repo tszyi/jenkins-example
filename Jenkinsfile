@@ -52,8 +52,10 @@ node {
       remote.identityFile  = KEYFILE
       remote.allowAnyHosts = true
       sshScript remote: remote, script: './script/pre-deploy.sh'
-      sh 'chmod 744 ./target/my-app.war'
-      sshPut remote: remote, from: './target/my-app.war', into: '/opt/apache-tomcat-8.5.60/webapps'
+      // sh 'chmod 744 ./target/my-app.war'
+      // sshPut remote: remote, from: './target/my-app.war', into: '/opt/apache-tomcat-8.5.60/webapps'
+      
+      
       // sh 'chmod 744 ./script/pre-deploy.sh'
       // sh 'ssh -i $KEYFILE $USER@192.168.56.108 \'./script/pre-deploy.sh && exit\''
       
@@ -76,8 +78,8 @@ node {
       //     Do........................................................			
       //     exit
     }
-    sh 'chmod 744 ./script/deploy.sh'
-    sh './script/deploy.sh' 
+    // sh 'chmod 744 ./script/deploy.sh'
+    // sh './script/deploy.sh' 
     sh 'echo all done'
   }
 }
