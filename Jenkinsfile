@@ -6,6 +6,7 @@ node {
   }
   stage('build'){
     echo "build starting"
+    sh 'whoami'
     sh 'mvn -B -DskipTests clean package'
   }
   stage('test'){
