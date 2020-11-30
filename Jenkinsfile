@@ -15,7 +15,7 @@ node {
   stage('deploy'){
       echo 'deploy starting'
       sshagent(['ssh-56.108-credential']) {
-        bat """
+        sh """
           ssh -o StrictHostKeyChecking=no root@192.168.56.108 \'bash -s \' < ./script/pre-deploy.sh
           ./script/deploy.sh
           """
