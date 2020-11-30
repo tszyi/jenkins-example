@@ -71,7 +71,8 @@ node {
       //     Do........................................................			
       //     exit
     }
-    sh  './script/deploy.sh' 
-    sh  'echo all done'
+    sh 'chmod 744 ./script/deploy.sh'
+    sh './script/deploy.sh' 
+    sh 'echo all done'
   }
 }
