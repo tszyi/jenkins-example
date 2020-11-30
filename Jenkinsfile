@@ -29,7 +29,7 @@ node {
         def remote = [:]
         remote.name = '192.168.56.108'
         remote.host = '192.168.56.108'
-        remote.user = ROOT_USER
+        remote.user = USER
         remote.identityFile  = KEY
         remote.allowAnyHosts = true
         sshPut remote: remote, from: './target/my-app.war', into: '/opt/apache-tomcat-8.5.60/webapps'
