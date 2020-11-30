@@ -36,7 +36,7 @@ node {
         remote.name = 'root'
         remote.host = '192.168.56.108'
         remote.user = USER
-        remote.identityFile  = KEY
+        remote.identityFile  = KEYFILE
         remote.allowAnyHosts = true
         sshPut remote: remote, from: './pom.xml', into: '/tmp'
       }
