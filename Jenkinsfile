@@ -4,17 +4,16 @@ node {
     // 以下會 clone 指定分支到 workspace
     git branch: 'dev', changelog: false, poll: false, url: 'https://github.com/tszyi/jenkins-example'
   }
-  withEnv(['M2_HOME=/usr/local/maven']) {
-    def mvn = M2_HOME + '/bin/mvn'
+  withEnv(['M2=/usr/local/maven/bin/mvn']) {
     // some block
     stage('build'){
       echo "build starting"
       echo sh(script: 'env|sort', returnStdout: true)
-      sh '$mvn -B -DskipTests clean package'
+      sh "$M2 -B -DskipTests clean package"
     }
     stage('test'){
       echo 'test starting'
-      sh '$mvn test'
+      sh '$M2 test"
     }
     stage('deploy'){
         echo 'deploy starting'
