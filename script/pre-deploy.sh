@@ -6,3 +6,4 @@ service tomcat stop
 rm -rf /opt/apache-tomcat-8.5.60/webapps/my-app.*
 # endregion
 
+exit
