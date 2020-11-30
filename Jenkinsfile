@@ -13,7 +13,7 @@ node {
     }
     stage('test'){
       echo 'test starting'
-      sh '$M2 test"
+      sh "$M2 test"
     }
     stage('deploy'){
         echo 'deploy starting'
