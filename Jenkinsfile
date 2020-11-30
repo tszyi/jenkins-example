@@ -51,10 +51,13 @@ node {
       remote.user = USER
       remote.identityFile  = KEYFILE
       remote.allowAnyHosts = true
+      sshScript remote: remote, script: './script/pre-deploy.sh'
       sshPut remote: remote, from: './target/my-app.war', into: '/opt/apache-tomcat-8.5.60/webapps'
-      // sshScript remote: remote, script: './script/pre-deploy.sh'
-      sh 'chmod 744 ./script/pre-deploy.sh'
-      sh 'ssh -i $KEYFILE $USER@192.168.56.108 \'./script/pre-deploy.sh && exit\''
+      // sh 'chmod 744 ./script/pre-deploy.sh'
+      // sh 'ssh -i $KEYFILE $USER@192.168.56.108 \'./script/pre-deploy.sh && exit\''
+      
+      
+      
       // withCredentials([sshUserPrivateKey(credentialsId: 'ssh-56.108-credential', keyFileVariable: 'KEY', passphraseVariable: 'PASS', usernameVariable: 'USER')]) {
       //   def remote = [:]
       //   remote.name = 'root'
