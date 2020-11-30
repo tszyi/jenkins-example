@@ -14,16 +14,16 @@ node {
   // }
   stage('deploy'){
       echo 'deploy starting'
-      sshagent(['ssh-56.108-credential']) {
-        sh """
-          ssh -o StrictHostKeyChecking=no root@192.168.56.108 \'bash -s \' < ./script/pre-deploy.sh
-          ./script/deploy.sh
-          """
-      }
-      // withCredentials([sshUserPrivateKey(credentialsId: 'test-cred', keyFileVariable: 'KEY_FILE', passphraseVariable: 'PASS', usernameVariable: 'USER')]) {
-      //   sh 'ssh root@192.168.56.108 \'bash -s \' < ./script/pre-deploy.sh'
-      //   sh './script/deploy.sh'
+      // sshagent(['ssh-56.108-credential']) {
+      //   sh """
+      //     ssh -o StrictHostKeyChecking=no root@192.168.56.108 \'bash -s \' < ./script/pre-deploy.sh
+      //     ./script/deploy.sh
+      //     """
       // }
+      withCredentials([sshUserPrivateKey(credentialsId: 'test-cred', keyFileVariable: 'KEY_FILE', passphraseVariable: 'PASS', usernameVariable: 'USER')]) {
+        sh 'ssh root@192.168.56.108 \'bash -s \' < ./script/pre-deploy.sh'
+        sh './script/deploy.sh'
+      }
       // sh 'ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.108'
       // sh 'ssh root@192.168.56.108 \'bash -s\' < ./script/pre-deploy.sh'
       // sh './script/deploy.sh'
