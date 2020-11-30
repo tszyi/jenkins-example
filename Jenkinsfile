@@ -5,15 +5,16 @@ node {
     git branch: 'dev', changelog: false, poll: false, url: 'https://github.com/tszyi/jenkins-example'
   }
   withEnv(['M2_HOME=/usr/local/maven']) {
+    def mvn = M2_HOME + '/bin/mvn'
     // some block
     stage('build'){
       echo "build starting"
       echo sh(script: 'env|sort', returnStdout: true)
-      sh 'mvn -B -DskipTests clean package'
+      sh '$mvn -B -DskipTests clean package'
     }
     stage('test'){
       echo 'test starting'
-      sh 'mvn test'
+      sh '$mvn test'
     }
     stage('deploy'){
         echo 'deploy starting'
