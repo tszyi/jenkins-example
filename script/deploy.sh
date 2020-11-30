@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # region transfer artifact and then restart server
-chmod 744 ./target/my-app.war
+# chmod 744 ./target/my-app.war
 # scp ./target/my-app.war root@192.168.56.108:/opt/apache-tomcat-8.5.60/webapps
 service tomcat start
 # endregion
