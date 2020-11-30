@@ -53,7 +53,7 @@ node {
             remote.user = USER
             remote.identityFile  = KEYFILE
             remote.allowAnyHosts = true
-            sshScript remote: remote, script: "./script/pre-deploy.sh"
+            sshScript remote: remote, script: "script/pre-deploy.sh"
           }
           sh  './script/deploy.sh' 
           sh  'echo all done'
