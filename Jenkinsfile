@@ -27,7 +27,7 @@ node {
       // }
 
       withCredentials([sshUserPrivateKey(credentialsId: 'ssh-deploy-tomcat', keyFileVariable: 'KEYFILE', passphraseVariable: '', usernameVariable: 'USER')]) {
-        sh  'ssh -o StrictHostKeyChecking=no -i $KEYFILE -l $USER 192.168.56.108'
+        sh  'ssh -i $KEYFILE -l $USER 192.168.56.108'
         sh  'echo hello world' 
       }
       // withCredentials([sshUserPrivateKey(credentialsId: 'ssh-56.108-credential', keyFileVariable: 'KEY', passphraseVariable: 'PASS', usernameVariable: 'USER')]) {
