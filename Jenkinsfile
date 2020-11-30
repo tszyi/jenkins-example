@@ -25,11 +25,8 @@ node {
         //     ssh root@192.168.56.108 'bash -s ' < ./script/pre-deploy.sh
         //     ./script/deploy.sh
         //     """
-        sh  """
-            ssh -o StrictHostKeyChecking=no -i "$KEY_FILE" root@192.168.56.108 << `EOF`
-            echo hello world
-            exit
-            """
+        sh  'ssh -o StrictHostKeyChecking=no -i "$KEY_FILE" root@192.168.56.108'
+        sh  'echo hello world'   
         
       }
       // sh 'ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.108'
