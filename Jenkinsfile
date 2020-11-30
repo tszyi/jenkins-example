@@ -26,8 +26,6 @@ node {
       // }
 
       withCredentials([usernamePassword(credentialsId: 'user-pw-root', passwordVariable: 'ROOT_PW', usernameVariable: 'ROOT_USER')]) {
-        print 
-        
         def remote = [:]
         remote.name = 'test'
         remote.host = '192.168.56.108'
