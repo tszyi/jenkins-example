@@ -36,7 +36,7 @@ node {
       // sh 'ssh root@192.168.56.108 \'bash -s\' < ./script/pre-deploy.sh'
       // sh './script/deploy.sh'
 
-      // ssh -o StrictHostKeyChecking=no -l root 10.6.xxx.xxx << EOF
+      // ssh -o StrictHostKeyChecking=no -l root 10.6.xxx.xxx <<-EOF
       //     Do........................................................			
       //     exit
   }
