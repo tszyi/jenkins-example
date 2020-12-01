@@ -18,7 +18,7 @@ node {
   }
   stage('deploy'){
     // echo 'deploy starting'
-    // withCredentials([sshUserPrivateKey(credentialsId: 'ssh-deploy-tomcat', keyFileVariable: 'KEYFILE', passphraseVariable: 'PASS', usernameVariable: 'USER')]) {
+    withCredentials([sshUserPrivateKey(credentialsId: 'ssh-deploy-tomcat', keyFileVariable: 'KEYFILE', passphraseVariable: 'PASS', usernameVariable: 'USER')]) {
       // sshagent(['ssh-56.108-credential']) {
       //   sh """
       //     ssh -o StrictHostKeyChecking=no root@192.168.56.108 \'bash -s \' < ./script/pre-deploy.sh
@@ -77,7 +77,7 @@ node {
       // ssh -o StrictHostKeyChecking=no -l root 10.6.xxx.xxx <<-EOF
       //     Do........................................................			
       //     exit
-    // }
+    }
     // sh 'chmod 744 ./script/deploy.sh'
     // sh './script/deploy.sh' 
     sh 'echo all done'
