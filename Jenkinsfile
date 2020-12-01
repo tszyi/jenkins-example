@@ -2,23 +2,23 @@ node {
   // TODO 由SCM的webhook 觸發build
   stage ('clone code') {
     // 以下會 clone 指定分支到 workspace
-    git branch: 'dev', changelog: false, poll: false, url: 'https://github.com/tszyi/jenkins-example'
+    // git branch: 'dev', changelog: false, poll: false, url: 'https://github.com/tszyi/jenkins-example'
   }
   withEnv(['M2=/usr/local/maven/bin/mvn']) {
     // some block
     stage('build'){
-      echo "build starting"
-      echo sh(script: 'env|sort', returnStdout: true)
-      sh "$M2 -B -DskipTests clean package"
+      // echo "build starting"
+      // echo sh(script: 'env|sort', returnStdout: true)
+      // sh "$M2 -B -DskipTests clean package"
     }
     stage('test'){
-      echo 'test starting'
-      sh "$M2 test"
+      // echo 'test starting'
+      // sh "$M2 test"
     }
   }
   stage('deploy'){
-    echo 'deploy starting'
-    withCredentials([sshUserPrivateKey(credentialsId: 'ssh-deploy-tomcat', keyFileVariable: 'KEYFILE', passphraseVariable: 'PASS', usernameVariable: 'USER')]) {
+    // echo 'deploy starting'
+    // withCredentials([sshUserPrivateKey(credentialsId: 'ssh-deploy-tomcat', keyFileVariable: 'KEYFILE', passphraseVariable: 'PASS', usernameVariable: 'USER')]) {
       // sshagent(['ssh-56.108-credential']) {
       //   sh """
       //     ssh -o StrictHostKeyChecking=no root@192.168.56.108 \'bash -s \' < ./script/pre-deploy.sh
@@ -51,7 +51,7 @@ node {
       remote.user = USER
       remote.identityFile  = KEYFILE
       remote.allowAnyHosts = true
-      sshScript remote: remote, script: './script/pre-deploy.sh'
+      // sshScript remote: remote, script: './script/pre-deploy.sh'
       sh 'chmod 744 ./target/my-app.war'
       sshPut remote: remote, from: './target/my-app.war', into: '/opt/apache-tomcat-8.5.60/webapps'
       
@@ -77,9 +77,9 @@ node {
       // ssh -o StrictHostKeyChecking=no -l root 10.6.xxx.xxx <<-EOF
       //     Do........................................................			
       //     exit
-    }
-    sh 'chmod 744 ./script/deploy.sh'
-    sh './script/deploy.sh' 
+    // }
+    // sh 'chmod 744 ./script/deploy.sh'
+    // sh './script/deploy.sh' 
     sh 'echo all done'
   }
 }
