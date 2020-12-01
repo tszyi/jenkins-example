@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# region shutdown tomcat, remove old app
-service tomcat stop
+systemctl stop tomcat
 
 until [ -z `ps -ef | grep tomcat | grep -v grep | awk '{print $2}'` ];
 do
@@ -9,8 +8,5 @@ do
   sleep 10
 done
 echo "service down"
-# ps -ef | grep tomcat | grep -v grep | awk '{print $2}' | xargs kill -9
-rm -rf /opt/apache-tomcat-8.5.60/webapps/my-app.*
-# endregion
 
-# exit
+rm -rf  /opt/tomcat/webapps/my-app.*
