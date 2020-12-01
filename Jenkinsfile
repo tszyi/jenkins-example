@@ -53,8 +53,8 @@ node {
       remote.allowAnyHosts = true
       // sshScript remote: remote, script: './script/pre-deploy.sh'
       sh 'chmod 744 ./target/my-app.war'
-      sshPut remote: remote, from: './target/my-app.war', into: '/opt/apache-tomcat-8.5.60/webapps'
-      
+      // sshPut remote: remote, from: './target/my-app.war', into: '/opt/apache-tomcat-8.5.60/webapps'
+      sh 'scp -i $KEYFILE ./target/my-app.war $USER@192.168.56.108:/opt/apache-tomcat-8.5.60/webapps'
       
       // sh 'chmod 744 ./script/pre-deploy.sh'
       // sh 'ssh -i $KEYFILE $USER@192.168.56.108 \'./script/pre-deploy.sh && exit\''
