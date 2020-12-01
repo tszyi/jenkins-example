@@ -1,6 +1,6 @@
 #!/bin/bash
 
-systemctl stop tomcat
+systemctl stop tomcat.service
 
 until [ -z `ps -ef | grep tomcat | grep -v grep | awk '{print $2}'` ];
 do
